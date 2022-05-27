@@ -9,7 +9,7 @@ const Banner = () => {
                 <div className="max-w-xl">
                     <h1 className="mb-5 text-5xl font-bold">Welcome To Parts 360 degree</h1>
                     <p className="mb-5">We have best quality laptop parts, we are offering the quality parts. We have over million of customer. They are happy to use our products</p>
-                    <button className="btn btn-primary bg-green-500 border-green-300 text-white">Get Started</button>
+                    <button className="btn btn-primary bg-green-500 border-green-300 text-white">Our Parts</button>
                 </div>
             </div>
         </div>
