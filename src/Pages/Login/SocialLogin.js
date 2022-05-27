@@ -1,21 +1,46 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, fabGoogle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import auth from '../../firebase.init';
+import { useSignInWithGoogle, useSignInWithGithub } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
+
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth)
+    const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth)
+    let signInError;
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/"
+
+
+    if (gLoading || gitLoading) {
+        return <Loading></Loading>
+    }
+
+    if (gError || gitError) {
+        signInError = <p className='text-red-500 text-center'> <small>{gError?.message}{gitError?.message}</small> </p>
+    }
+
+    if (gUser || gitUser) {
+        navigate(from, { replace: true })
+    }
+
+
     return (
         <section className='w-full max-w-md mx-auto mt-6'>
-            <div className="flex items-center">
-                <div className="bg-teal-500" style={{ height: '2px', width: '50%' }}></div>
-                <p className="px-2">OR</p>
-                <div className="bg-teal-500" style={{ height: '2px', width: '50%' }}></div>
-            </div>
-            <div className='flex flex-column justify-center mt-5'>
-                <button className='btn rounded-2xl'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
-                        <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
-                    </svg>
+            <div className="divider">OR</div>
+            {
+                signInError
+            }
+            <div className='mt-5'>
+                <button onClick={() => signInWithGoogle()} className='btn btn-outline mb-4 block mx-auto'>
                     Continue With Google
+                </button>
+                <button onClick={() => signInWithGithub()} className='btn btn-outline block mx-auto'>
+                    Continue With Github
                 </button>
             </div>
         </section>

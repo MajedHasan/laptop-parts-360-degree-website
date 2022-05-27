@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 const Footer = () => {
 
@@ -38,6 +39,7 @@ const Footer = () => {
             <div>
                 <p>Copyright © {currentYear} - All right reserved by Parts 360 Degree</p>
             </div>
+            <ToastContainer />
         </footer>
     );
 };
