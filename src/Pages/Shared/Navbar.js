@@ -1,8 +1,16 @@
 import React from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
 
+    const [user] = useAuthState(auth)
+    const handleSignOut = () => {
+        signOut(auth)
+        localStorage.removeItem("accessToken")
+    }
     const CustomLink = ({ to, children, ...props }) => {
 
         let resolved = useResolvedPath(to)
@@ -22,7 +30,9 @@ const Navbar = () => {
         <li><CustomLink to='/'>Home</CustomLink></li>
         <li><CustomLink to='/blogs'>Blogs</CustomLink></li>
         <li><CustomLink to='/portfolio'>Portfolio</CustomLink></li>
-        <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
+        {
+            user && <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
+        }
     </>
 
     return (
@@ -48,8 +58,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <CustomLink to='/login' style={{ padding: '3px 5px', borderRadius: '4px', marginRight: '6px' }}>Login</CustomLink>
-                <CustomLink to='/register' style={{ padding: '3px 5px', borderRadius: '4px' }}>Register</CustomLink>
+                {
+                    user ? <>
+                        <span className='text-lg font-bold'>{user?.displayName}</span>
+                        <button onClick={handleSignOut} className='btn btn-xs btn-danger ml-3'>Sign Out</button>
+                    </>
+                        : <>
+                            <CustomLink to='/login' style={{ padding: '3px 5px', borderRadius: '4px', marginRight: '6px' }}>Login</CustomLink>
+                            <CustomLink to='/register' style={{ padding: '3px 5px', borderRadius: '4px' }}>Register</CustomLink>
+                        </>
+                }
             </div>
         </div>
     );
