@@ -3,7 +3,7 @@ import bgImg from '../../images/home-banner.png'
 
 const Banner = () => {
     return (
-        <div className="hero min-h-[85vh]" style={{ background: `url(${bgImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <section className="hero min-h-[85vh]" style={{ background: `url(${bgImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
             <div className="hero-overlay bg-opacity-40"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-xl">
@@ -12,7 +12,7 @@ const Banner = () => {
                     <a href='#parts' className="btn btn-primary bg-green-500 border-green-300 text-white">Our Parts</a>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
