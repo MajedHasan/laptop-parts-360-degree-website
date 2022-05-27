@@ -8,7 +8,7 @@ const AddAProduct = () => {
                 <div className="box shadow rounded-lg p-6 max-w-sm w-full mx-auto">
                     <form >
                         <input type="text" placeholder="Name" name='name' class="input input-bordered w-full mb-3" />
-                        <input type="number" placeholder="Price" name='price' class="input input-bordered w-full mb-3" />
+                        <input type="number" placeholder="Unit Price" name='price' class="input input-bordered w-full mb-3" />
                         <input type="number" placeholder="Quantity" name='quantity' class="input input-bordered w-full mb-3" />
                         <input type="number" placeholder="Minimum Order Quantity" name='minQuantity' class="input input-bordered w-full mb-3" />
                         <label htmlFor="">Image</label>
