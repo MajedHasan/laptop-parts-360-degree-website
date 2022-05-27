@@ -58,7 +58,7 @@ const Login = () => {
                         {
                             signInError
                         }
-                        <input type="text" placeholder="Email Address" id='email' name='email' className="input input-bordered w-full mb-3" />
+                        <input type="email" placeholder="Email Address" id='email' name='email' className="input input-bordered w-full mb-3" />
                         <input type="password" placeholder="Password" name='password' className="input input-bordered w-full mb-3" />
                         <p onClick={handleResetPassword} className='text-orange-500 mb-1'>Forget your password? click here</p>
                         <Link to='/register' className='mb-4 block'>Need an account? <span className='underline'>Register here</span></Link>
