@@ -87,7 +87,7 @@ const Profile = () => {
         <section className="my-12">
             <div className="container mx-auto px-5">
                 <h2 className='mb-8 text-center text-3xl text-teal-800'>My Profile</h2>
-                <div className="shadow rounded p-5 max-w-md w-full">
+                <div className="shadow rounded p-5 max-w-md w-full mx-auto">
                     <form onClick={handleUpdateProfile}>
                         <input type="text" className="input input-bordered w-full mb-4" value={user.displayName} disabled />
                         <input type="email" className="input input-bordered w-full mb-4" value={user.email} disabled />
