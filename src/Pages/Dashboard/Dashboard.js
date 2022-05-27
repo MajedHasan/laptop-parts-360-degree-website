@@ -28,6 +28,7 @@ const Dashboard = () => {
                 <ul className="menu p-4 overflow-y-auto w-48 text-base-content">
                     <li><CustomLink to='/dashboard'>My Profile</CustomLink></li>
                     <li><CustomLink to='/dashboard/myorders'>My Orders</CustomLink></li>
+                    <li><CustomLink to='/dashboard/addreview'>Add A Review</CustomLink></li>
                 </ul>
 
             </div>

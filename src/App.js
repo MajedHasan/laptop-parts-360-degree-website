@@ -13,6 +13,7 @@ import Footer from './Pages/Shared/Footer';
 import RequireAuth from './Pages/Login/RequireAuth';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import Profile from './Pages/Dashboard/Profile';
+import AddAReview from './Pages/Dashboard/AddAReview';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         }>
           <Route index element={<Profile></Profile>}></Route>
           <Route path='myorders' element={<MyOrders></MyOrders>}></Route>
+          <Route path='addreview' element={<AddAReview></AddAReview>}></Route>
         </Route>
 
         <Route path='/login' element={<Login></Login>}></Route>
