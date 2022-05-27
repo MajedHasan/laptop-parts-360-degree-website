@@ -32,11 +32,7 @@ const ManageAllOrders = () => {
                                 <span className='bg-orange-400 rounded-lg py-[4px] px-3 text-white uppercase text-xs font-semibold inline-block'>pending</span>
                             </td>
                             <td>
-                                <select name="" id="">
-                                    <option value="selectAnOption" className='btn btn-xs bg-red-500 disabled text-white'><small>-- Select An Option --</small></option>
-                                    <option value="ship" className='btn bg-orange-500 text-white'>Ship</option>
-                                    <option value="complete" className='btn bg-green-500 text-white'>Complete</option>
-                                </select>
+                                <button className="btn btn-xs bg-yellow-500 border-yellow-500 text-white">Ship</button>
                             </td>
                         </tr>
                         <tr>
@@ -52,10 +48,7 @@ const ManageAllOrders = () => {
                                 <span className='bg-slate-600 rounded-lg py-[4px] px-3 text-white uppercase text-xs font-semibold inline-block'>in progress</span>
                             </td>
                             <td>
-                                <select name="" id="">
-                                    <option value="selectAnOption" className='btn btn-xs bg-red-500 disabled text-white'><small>-- Select An Option --</small></option>
-                                    <option value="cancel" className='btn bg-red-500 text-white'>Cancel</option>
-                                </select>
+                                <button className="btn btn-xs bg-red-500 border-red-500 text-white">Cancel</button>
                             </td>
                         </tr>
                         <tr>
@@ -71,10 +64,7 @@ const ManageAllOrders = () => {
                                 <span className='bg-yellow-400 rounded-lg py-[4px] px-3 text-white uppercase text-xs font-semibold inline-block'>shipped</span>
                             </td>
                             <td>
-                                <select name="" id="">
-                                    <option value="selectAnOption" className='btn btn-xs bg-red-500 disabled text-white'><small>-- Select An Option --</small></option>
-                                    <option value="complete" className='btn bg-green-500 text-white'>Complete</option>
-                                </select>
+                                <button className="btn btn-xs bg-green-500 border-green-500 text-white">Complete</button>
                             </td>
                         </tr>
                         <tr>
