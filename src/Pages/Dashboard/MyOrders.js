@@ -10,8 +10,9 @@ const MyOrders = () => {
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
                             <th>Payment Status</th>
                             <th>Order Status</th>
                         </tr>
@@ -19,9 +20,10 @@ const MyOrders = () => {
                     <tbody>
                         <tr>
                             <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
+                            <td>Apple Macbook Pro 2017 Battery</td>
+                            <td>15</td>
+                            <td>$<span className='font-semibold text-slate-700'>5.00</span></td>
+                            <td>$<span className='font-semibold text-slate-900'>75.00</span></td>
                             <td className='text-center'>
                                 <span className="font-semibold text-green-500">paid</span>
                             </td>
@@ -31,9 +33,10 @@ const MyOrders = () => {
                         </tr>
                         <tr>
                             <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
+                            <td>Laptop Bag</td>
+                            <td>50</td>
+                            <td>$<span className='font-semibold text-slate-700'>10.00</span></td>
+                            <td>$<span className='font-semibold text-slate-900'>500.00</span></td>
                             <td className='text-center'>
                                 <span className="text-red-400 font-semibold block">unpaid</span>
                                 <button className='btn btn-xs bg-green-600 border-none text-white block mx-auto'>pay now</button>
@@ -45,9 +48,10 @@ const MyOrders = () => {
                         </tr>
                         <tr>
                             <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
+                            <td>Apple Macbook Pro 2017 Charger</td>
+                            <td>5</td>
+                            <td>$<span className='font-semibold text-slate-700'>20.00</span></td>
+                            <td>$<span className='font-semibold text-slate-900'>100.00</span></td>
                             <td className='text-center'>
                                 <span className="font-semibold text-green-500">paid</span>
                             </td>
@@ -57,9 +61,10 @@ const MyOrders = () => {
                         </tr>
                         <tr>
                             <th>4</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
+                            <td>laptop Mouse</td>
+                            <td>12</td>
+                            <td>$<span className='font-semibold text-slate-700'>10.00</span></td>
+                            <td>$<span className='font-semibold text-slate-900'>120.00</span></td>
                             <td className='text-center'>
                                 <span className="font-semibold text-green-500">paid</span>
                             </td>

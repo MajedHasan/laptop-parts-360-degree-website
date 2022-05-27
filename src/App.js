@@ -14,6 +14,10 @@ import RequireAuth from './Pages/Login/RequireAuth';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import Profile from './Pages/Dashboard/Profile';
 import AddAReview from './Pages/Dashboard/AddAReview';
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
+import AddAProduct from './Pages/Dashboard/AddAProduct';
+import Users from './Pages/Dashboard/Users';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
           <Route index element={<Profile></Profile>}></Route>
           <Route path='myorders' element={<MyOrders></MyOrders>}></Route>
           <Route path='addreview' element={<AddAReview></AddAReview>}></Route>
+          <Route path='manageAllOrder' element={<ManageAllOrders></ManageAllOrders>}></Route>
+          <Route path='addAProduct' element={<AddAProduct></AddAProduct>}></Route>
+          <Route path='users' element={<Users></Users>}></Route>
+          <Route path='manageProducts' element={<ManageProducts></ManageProducts>}></Route>
         </Route>
 
         <Route path='/login' element={<Login></Login>}></Route>
