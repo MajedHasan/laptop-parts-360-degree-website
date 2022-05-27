@@ -4,7 +4,7 @@ const Loading = () => {
     return (
         <section className='my-8'>
             <div className="container mx-auto px-5">
-                <button class="btn loading block mx-auto">loading</button>
+                <button className="btn loading block mx-auto">loading</button>
             </div>
         </section>
     );

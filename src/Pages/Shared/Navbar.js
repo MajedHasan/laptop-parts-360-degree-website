@@ -49,6 +49,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                <label htmlFor="dashboard-sidebar" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -60,7 +61,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user ? <>
-                        <span className='text-lg font-bold'>{user?.displayName}</span>
+                        <span className='text-lg font-bold invisible md:visible '>{user?.displayName}</span>
                         <button onClick={handleSignOut} className='btn btn-xs btn-danger ml-3'>Sign Out</button>
                     </>
                         : <>
