@@ -60,7 +60,8 @@ const Login = () => {
                         }
                         <input type="text" placeholder="Email Address" id='email' name='email' className="input input-bordered w-full mb-3" />
                         <input type="password" placeholder="Password" name='password' className="input input-bordered w-full mb-3" />
-                        <p onClick={handleResetPassword} className='text-orange-500 mb-3'>Forget your password? click here</p>
+                        <p onClick={handleResetPassword} className='text-orange-500 mb-1'>Forget your password? click here</p>
+                        <Link to='/register' className='mb-4 block'>Need an account? <span className='underline'>Register here</span></Link>
                         <button type='submit' className='btn bg-slate-900 border-slate-900 mx-auto block'>Login</button>
                     </form>
                 </div>
