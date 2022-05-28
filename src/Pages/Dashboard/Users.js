@@ -3,26 +3,21 @@ import Loading from '../Shared/Loading';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
+import { useQuery } from 'react-query';
 
 const Users = () => {
 
-    const [users, setUsers] = useState([])
     const [user, loading] = useAuthState(auth)
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
+        method: "GET",
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`
+        }
+    }).then(res => res.json())
+    )
 
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users', {
-            method: "GET",
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setUsers(data))
-    }, [user])
-
-
-    if (loading) {
+    if (loading || isLoading) {
         return <Loading></Loading>
     }
 
@@ -40,6 +35,7 @@ const Users = () => {
             .then(data => {
                 if (data.upsertedCount || data.modifiedCount) {
                     toast.success("This user is an admin Now")
+                    refetch()
                 }
             })
     }
@@ -61,13 +57,13 @@ const Users = () => {
                     </thead>
                     <tbody>
                         {
-                            users.length < 1 ? <>
+                            users?.length < 1 ? <>
                                 <tr>
                                     <td colSpan='8' className='text-2xl text-center font-bold text-red-500'>There have no User</td>
                                 </tr>
                             </>
                                 :
-                                users.map((user, index) =>
+                                users?.map((user, index) =>
                                     <tr key={user?._id}>
                                         <th>{index + 1}</th>
                                         <td>{user?.name}</td>
