@@ -10,9 +10,9 @@ const ReviewCard = ({ review }) => {
                 {
                     review?.rating === '1' && <>
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
-                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-500" />
-                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-500" />
-                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-500" />
+                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
+                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
+                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
                     </>
                 }
@@ -20,8 +20,8 @@ const ReviewCard = ({ review }) => {
                     review?.rating === '2' && <>
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
-                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-500" />
-                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-500" />
+                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
+                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
                     </>
                 }
@@ -30,7 +30,7 @@ const ReviewCard = ({ review }) => {
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
-                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-500" />
+                        <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-slate-700" />
                     </>
                 }
@@ -49,7 +49,7 @@ const ReviewCard = ({ review }) => {
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
                         <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
-                        <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-700" />
+                        <FontAwesomeIcon icon={faStar} className="text-2xl text-orange-500" />
                     </>
                 }
             </div>

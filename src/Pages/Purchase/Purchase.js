@@ -15,7 +15,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/parts/${'id'}`, {
+        fetch(`http://localhost:5000/parts/${id}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -23,18 +23,9 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
-
+                setParts(data)
             })
-        setParts({
-            id: 1234,
-            img: 'https://api.lorem.space/image/shoes?w=400&h=225',
-            name: 'name',
-            price: 15,
-            quantity: 50,
-            minOrderQuantity: 5,
-            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo molestiae dignissimos ad voluptate animi quod accusantium ullam quia doloremque similique iure, consequuntur itaque asperiores nam maxime labore voluptas, vel assumenda porro. Alias explicabo error harum?'
-        })
-    }, [])
+    }, [id])
 
 
     if (loading) {
@@ -44,41 +35,34 @@ const Purchase = () => {
 
     const handleQuantity = event => {
         const quantity = event.target.value
-        if (quantity < parts.minOrderQuantity || quantity > parts.quantity || quantity < 1) {
-            toast.warn("Order Quantity can be less than Quantity and grater than Minimum Order Quantity")
-            setCanOrder(false)
-        }
-        else {
+        if (quantity >= parseInt(parts?.minOrderQuantity) && quantity <= parseInt(parts?.quantity) && quantity >= '1') {
             const price = parts?.price
             const newTotalPrice = price * quantity
             setTotalPriceState(newTotalPrice)
             setCanOrder(true)
         }
+        else {
+            toast.warn("Order Quantity can be less than Quantity and grater than Minimum Order Quantity")
+            setCanOrder(false)
+        }
     }
+
     const handleBook = async (event) => {
         event.preventDefault()
-        const phone = event.target.phone.value
-        const address = event.target.address.value
         const quantity = event.target.quantity.value
-        const price = parts?.price
-        const partsName = parts?.name
-        const totalPrice = totalPriceState
         const order = {
             name: user?.displayName,
             email: user?.email,
-            phone: phone,
-            address: address,
+            phone: event.target.phone.value,
+            address: event.target.address.value,
             quantity: quantity,
             productId: id,
-            price: price,
-            partsName: partsName,
-            totalPrice: totalPrice,
+            price: parts?.price,
+            partsName: parts?.name,
+            totalPrice: totalPriceState,
+            paymentStatus: 'unpaid',
+            orderStatus: 'inProgress'
         }
-
-        toast.success("Your Order has been Placed Successfully")
-        parts.quantity = parts.quantity - quantity
-        event.target.reset()
-        setTotalPriceState(0)
 
         await fetch('http://localhost:5000/order', {
             method: "POST",
@@ -90,10 +74,37 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
-                toast.success("Your Order has been Placed Successfully")
-                parts.quantity = parts.quantity - quantity
-                event.target.reset()
-                setTotalPriceState(0)
+                if (data?.insertedId) {
+                    toast.success("Your Order has been Placed Successfully")
+                    parts.quantity = parts.quantity - quantity
+                    event.target.reset()
+                    setTotalPriceState(0)
+
+                    const newParts = {
+                        name: parts.name,
+                        price: parts.price,
+                        quantity: parts.quantity,
+                        minOrderQuantity: parts.minOrderQuantity,
+                        img: parts.img,
+                        description: parts.description
+                    }
+
+                    fetch(`http://localhost:5000/parts/${id}`, {
+                        method: "PATCH",
+                        headers: {
+                            'Content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                        },
+                        body: JSON.stringify(newParts)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data?.modifiedCount || data?.upsertedCount) {
+                                toast.success("Product update also")
+                            }
+                        })
+
+                }
             })
     }
 
