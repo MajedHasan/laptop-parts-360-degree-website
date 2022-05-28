@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 import SocialLogin from './SocialLogin';
 
@@ -12,6 +13,7 @@ const Register = () => {
         sendEmailVerification: true
     })
     const [updateProfile, updating, updateError] = useUpdateProfile(auth)
+    const [token] = useToken(user)
     let signUpError;
     const navigate = useNavigate()
 
@@ -22,7 +24,7 @@ const Register = () => {
     if (error || updateError) {
         signUpError = <p className='text-red-500 text-center'> <small>{error?.message}{updateError?.message}</small> </p>
     }
-    if (user) {
+    if (token) {
         navigate("/")
     }
 

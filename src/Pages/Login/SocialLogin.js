@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 import auth from '../../firebase.init';
 import { useSignInWithGoogle, useSignInWithGithub } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
