@@ -44,7 +44,7 @@ const Purchase = () => {
 
     const handleQuantity = event => {
         const quantity = event.target.value
-        if (quantity < 5 || quantity > 50 || quantity < 1) {
+        if (quantity < parts.minOrderQuantity || quantity > parts.quantity || quantity < 1) {
             toast.warn("Order Quantity can be less than Quantity and grater than Minimum Order Quantity")
             setCanOrder(false)
         }
