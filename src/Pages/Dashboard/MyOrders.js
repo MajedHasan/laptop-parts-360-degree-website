@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -57,13 +57,13 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            myOrders.length < 1 ? <>
+                            myOrders?.length < 1 ? <>
                                 <tr>
                                     <td colSpan='7' className='text-center text-2xl font-semibold text-red-500'>You have not any order</td>
                                 </tr>
                             </>
                                 :
-                                myOrders.map((order, index) => <>
+                                myOrders?.map((order, index) => <>
                                     <tr>
                                         <th>{index + 1}</th>
                                         <td>{order?.partsName}</td>

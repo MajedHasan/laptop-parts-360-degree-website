@@ -2,26 +2,55 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
+import { useQuery } from 'react-query';
 
 const ManageAllOrders = () => {
 
-    const [allOrders, setAllOrders] = useState([])
-    const [user, loading] = useAuthState(auth)
+    // const [user, loading] = useAuthState(auth)
+    const { data: allOrders, isLoading, refetch } = useQuery('manageAllOrders', () => fetch('http://localhost:5000/orders', {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`
+        }
+    }).then(res => res.json())
+    )
 
-    useEffect(() => {
-        fetch('http://localhost:5000/orders', {
-            method: "GET",
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+
+    const handleDeleteOrder = id => {
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
         })
             .then(res => res.json())
-            .then(data => setAllOrders(data))
-    }, [])
+            .then(data => {
+                toast.success("Product has been deleted")
+                console.log(data);
+                refetch()
+            })
+    }
 
-
-    if (loading) {
-        return <Loading></Loading>
+    const handleUpdateOrder = (id, status) => {
+        const orderStatus = { orderStatus: status }
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            },
+            body: JSON.stringify(orderStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch()
+                toast.success(`Order is: ${status} now`)
+            })
     }
 
 
@@ -81,13 +110,13 @@ const ManageAllOrders = () => {
                                         </td>
                                         <td>
                                             {
-                                                order?.paymentStatus === 'inProgress' && <button className="btn btn-xs bg-red-500 border-red-500 text-white">Cancel</button>
+                                                order?.paymentStatus === 'inProgress' && <button onClick={() => handleDeleteOrder(order?._id)} className="btn btn-xs bg-red-500 border-red-500 text-white">Cancel</button>
                                             }
                                             {
-                                                order?.paymentStatus === 'pending' && <button className="btn btn-xs bg-yellow-500 border-yellow-500 text-white">Ship</button>
+                                                order?.paymentStatus === 'pending' && <button onClick={() => handleUpdateOrder(order?._id, 'ship')} className="btn btn-xs bg-yellow-500 border-yellow-500 text-white">Ship</button>
                                             }
                                             {
-                                                order?.paymentStatus === 'ship' && <button className="btn btn-xs bg-green-500 border-green-500 text-white">Complete</button>
+                                                order?.paymentStatus === 'ship' && <button onClick={() => handleUpdateOrder(order?._id, 'complete')} className="btn btn-xs bg-green-500 border-green-500 text-white">Complete</button>
                                             }
                                         </td>
                                     </tr>
