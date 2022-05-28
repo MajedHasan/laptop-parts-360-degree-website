@@ -5,11 +5,13 @@ import SocialLogin from './SocialLogin';
 import { useSignInWithEmailAndPassword, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth)
     const [sendPasswordResetEmail, sending, verificationError] = useSendPasswordResetEmail(auth)
+    const [token] = useToken(user)
     let signInError;
     const navigate = useNavigate()
     const location = useLocation()
@@ -24,7 +26,7 @@ const Login = () => {
         signInError = <p className='text-red-500 text-center'> <small>{error?.message}{verificationError?.message}</small> </p>
     }
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true })
     }
 
