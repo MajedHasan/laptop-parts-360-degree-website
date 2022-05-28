@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyOrders = () => {
     return (
@@ -39,7 +40,8 @@ const MyOrders = () => {
                             <td>$<span className='font-semibold text-slate-900'>500.00</span></td>
                             <td className='text-center'>
                                 <span className="text-red-400 font-semibold block">unpaid</span>
-                                <button className='btn btn-xs bg-green-600 border-none text-white block mx-auto'>pay now</button>
+                                <Link to={`/dashboard/payment/${'id'}`} className='btn btn-xs bg-green-600 border-none text-white mx-auto'>pay now</Link>
+                                <br />
                                 <button className='btn btn-xs bg-red-600 border-none text-white'>cancel</button>
                             </td>
                             <td>

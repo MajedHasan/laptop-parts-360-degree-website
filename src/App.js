@@ -19,6 +19,7 @@ import AddAProduct from './Pages/Dashboard/AddAProduct';
 import Users from './Pages/Dashboard/Users';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Purchase from './Pages/Purchase/Purchase';
+import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
           <Route path='addAProduct' element={<AddAProduct></AddAProduct>}></Route>
           <Route path='users' element={<Users></Users>}></Route>
           <Route path='manageProducts' element={<ManageProducts></ManageProducts>}></Route>
-          <Route path='payment' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
         </Route>
 
         <Route path='/login' element={<Login></Login>}></Route>
