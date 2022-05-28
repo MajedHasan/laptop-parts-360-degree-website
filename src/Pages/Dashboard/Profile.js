@@ -24,10 +24,10 @@ const Profile = () => {
             .then(res => res.json())
             .then(data => {
                 if (data?.education && data?.location && data?.phone && data?.linkedin) {
-                    setEducation(data?.education || '')
-                    setLocation(data?.location || '')
-                    setPhoneNumber(data?.phone || '')
-                    setLinkedinProfileLink(data?.linkedin || '')
+                    setEducation(data?.education)
+                    setLocation(data?.location)
+                    setPhoneNumber(data?.phone)
+                    setLinkedinProfileLink(data?.linkedin)
                 }
             })
     }, [user])
