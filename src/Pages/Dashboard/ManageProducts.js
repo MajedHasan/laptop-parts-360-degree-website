@@ -66,7 +66,7 @@ const ManageProducts = () => {
                                     </td>
                                     <td>{parts?.name}</td>
                                     <td>{parts?.quantity}</td>
-                                    <td>$<span className='font-semibold text-slate-700'>{parts?.unitPrice}</span></td>
+                                    <td>$<span className='font-semibold text-slate-700'>{parts?.price}</span></td>
                                     <td>
                                         <Link to={`/dashboard/manageProducts/${parts?._id}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
                                     </td>

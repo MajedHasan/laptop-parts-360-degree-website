@@ -56,6 +56,9 @@ const AddAProduct = () => {
                 <h2 className="text-center font-bold text-3xl text-teal-600 mb-8">Add A Product</h2>
                 <div className="box shadow rounded-lg p-6 max-w-sm w-full mx-auto">
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        {
+                            errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>
+                        }
                         <input type="text" placeholder="Name" name='name'
                             {...register("name", {
                                 required: {
@@ -66,6 +69,9 @@ const AddAProduct = () => {
                             }
                             class="input input-bordered w-full mb-3" />
 
+                        {
+                            errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>
+                        }
                         <input type="number" placeholder="Unit Price" name='price'
                             {...register("price", {
                                 required: {
@@ -76,6 +82,9 @@ const AddAProduct = () => {
                             }
                             class="input input-bordered w-full mb-3" />
 
+                        {
+                            errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>
+                        }
                         <input type="number" placeholder="Quantity" name='quantity'
                             {...register("quantity", {
                                 required: {
@@ -86,6 +95,9 @@ const AddAProduct = () => {
                             }
                             class="input input-bordered w-full mb-3" />
 
+                        {
+                            errors.minOrderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minOrderQuantity.message}</span>
+                        }
                         <input type="number" placeholder="Minimum Order Quantity"
                             {...register("minOrderQuantity", {
                                 required: {
@@ -94,8 +106,11 @@ const AddAProduct = () => {
                                 }
                             })
                             }
-                            name='minQuantity' class="input input-bordered w-full mb-3" />
+                            name='minOrderQuantity' class="input input-bordered w-full mb-3" />
 
+                        {
+                            errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>
+                        }
                         <label htmlFor="">Image</label>
                         <input type="file" name='image' class="input input-bordered w-full mb-3"
                             {...register("image", {
@@ -107,6 +122,9 @@ const AddAProduct = () => {
                             }
                         />
 
+                        {
+                            errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>
+                        }
                         <textarea class="textarea textarea-bordered w-full mb-3" placeholder="Description"
                             {...register("description", {
                                 required: {

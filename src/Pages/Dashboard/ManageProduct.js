@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 
 const ManageProduct = () => {
 
-    // const { id } = useParams()
-    const id = "6291f05fedc676b599ec5a76"
+    const { id } = useParams()
+    // const id = "6291f05fedc676b599ec5a76"
     const [parts, setParts] = useState({})
 
 
