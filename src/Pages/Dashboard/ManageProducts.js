@@ -28,7 +28,7 @@ const ManageProducts = () => {
                             <td>15</td>
                             <td>$<span className='font-semibold text-slate-700'>5.00</span></td>
                             <td>
-                                <Link to={`/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
+                                <Link to={`/dashboard/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
                             </td>
                             <td>
                                 <button className='btn btn-xs bg-red-500 border-red-500 text-white'> Delete </button>
@@ -41,7 +41,7 @@ const ManageProducts = () => {
                             <td>50</td>
                             <td>$<span className='font-semibold text-slate-700'>10.00</span></td>
                             <td>
-                                <Link to={`/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
+                                <Link to={`/dashboard/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
                             </td>
                             <td>
                                 <button className='btn btn-xs bg-red-500 border-red-500 text-white'> Delete </button>
@@ -54,7 +54,7 @@ const ManageProducts = () => {
                             <td>5</td>
                             <td>$<span className='font-semibold text-slate-700'>20.00</span></td>
                             <td>
-                                <Link to={`/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
+                                <Link to={`/dashboard/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
                             </td>
                             <td>
                                 <button className='btn btn-xs bg-red-500 border-red-500 text-white'> Delete </button>
@@ -67,7 +67,7 @@ const ManageProducts = () => {
                             <td>12</td>
                             <td>$<span className='font-semibold text-slate-700'>10.00</span></td>
                             <td>
-                                <Link to={`/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
+                                <Link to={`/dashboard/manageProducts/${'_id'}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
                             </td>
                             <td>
                                 <button className='btn btn-xs bg-red-500 border-red-500 text-white'> Delete </button>

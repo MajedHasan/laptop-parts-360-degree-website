@@ -20,6 +20,7 @@ import Users from './Pages/Dashboard/Users';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Purchase from './Pages/Purchase/Purchase';
 import Payment from './Pages/Dashboard/Payment';
+import ManageProduct from './Pages/Dashboard/ManageProduct';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path='users' element={<Users></Users>}></Route>
           <Route path='manageProducts' element={<ManageProducts></ManageProducts>}></Route>
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
+          <Route path='manageProducts/:id' element={<ManageProduct></ManageProduct>}></Route>
         </Route>
 
         <Route path='/login' element={<Login></Login>}></Route>
