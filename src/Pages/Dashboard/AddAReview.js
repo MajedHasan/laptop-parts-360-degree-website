@@ -2,10 +2,18 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
 
 const AddAReview = () => {
 
     const [user, loading] = useAuthState(auth)
+
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+
     const handleAddReview = async (event) => {
         event.preventDefault()
         const rating = event.target.rating.value
@@ -17,8 +25,8 @@ const AddAReview = () => {
             reviewText: reviewText,
         }
 
-        await fetch('http://localhost:5000/addreview', {
-            method: "GET",
+        await fetch('http://localhost:5000/review', {
+            method: "POST",
             headers: {
                 'Content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -27,15 +35,11 @@ const AddAReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // event.target.reset()
+                if (data?.insertedId) {
+                    event.target.reset()
+                    toast.success("Your Review has been added successfully")
+                }
             })
-        console.log(myReview);
-        event.target.reset()
-    }
-
-
-    if (loading) {
-        return <Loading></Loading>
     }
 
 
