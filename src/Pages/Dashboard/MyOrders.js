@@ -3,26 +3,39 @@ import { Link } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 
 const MyOrders = () => {
 
-    const [myOrders, setMyOrders] = useState([])
     const [user, loading] = useAuthState(auth)
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/orders/${user?.email}`, {
-            method: "GET",
+    const { data: myOrders, isLoading, refetch } = useQuery('myOrders', () => fetch(`http://localhost:5000/orders/${user?.email}`, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`
+        }
+    }).then(res => res.json())
+    )
+
+
+    if (loading || isLoading) {
+        return <Loading></Loading>
+    }
+
+
+    const handleDeleteOrder = id => {
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
         })
             .then(res => res.json())
-            .then(data => setMyOrders(data))
-    }, [user])
-
-
-    if (loading) {
-        return <Loading></Loading>
+            .then(data => {
+                toast.success("Product has been deleted")
+                console.log(data);
+                refetch()
+            })
     }
 
 
@@ -66,7 +79,7 @@ const MyOrders = () => {
                                                     <span className="text-red-400 font-semibold block">unpaid</span>
                                                     <Link to={`/dashboard/payment/${'id'}`} className='btn btn-xs bg-green-600 border-none text-white mx-auto'>pay now</Link>
                                                     <br />
-                                                    <button className='btn btn-xs bg-red-600 border-none text-white'>cancel</button>
+                                                    <button onClick={() => handleDeleteOrder(order?._id)} className='btn btn-xs bg-red-600 border-none text-white'>cancel</button>
                                                 </>
                                             }
                                         </td>
