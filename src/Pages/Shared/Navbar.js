@@ -3,14 +3,22 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import Loading from './Loading';
 
 const Navbar = () => {
 
-    const [user] = useAuthState(auth)
+    const [user, loading] = useAuthState(auth)
     const handleSignOut = () => {
         signOut(auth)
         localStorage.removeItem("accessToken")
     }
+
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+
     const CustomLink = ({ to, children, ...props }) => {
 
         let resolved = useResolvedPath(to)
@@ -34,6 +42,7 @@ const Navbar = () => {
             user && <li><CustomLink to='/dashboard'>Dashboard</CustomLink></li>
         }
     </>
+
 
     return (
         <div className="navbar bg-base-300">

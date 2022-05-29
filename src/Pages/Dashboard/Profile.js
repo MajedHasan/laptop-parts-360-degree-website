@@ -14,7 +14,7 @@ const Profile = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/user/${user?.email}`
+        const url = `https://agile-tor-39199.herokuapp.com/user/${user?.email}`
         fetch(url, {
             method: "GET",
             headers: {
@@ -46,7 +46,7 @@ const Profile = () => {
             phone: phoneNumber,
             linkedin: linkedinProfileLink
         }
-        const url = `http://localhost:5000/user/${user?.email}`
+        const url = `https://agile-tor-39199.herokuapp.com/user/${user?.email}`
         await fetch(url, {
             method: "PUT",
             headers: {

@@ -8,7 +8,7 @@ import { useQuery } from 'react-query';
 const Users = () => {
 
     const [user, loading] = useAuthState(auth)
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://agile-tor-39199.herokuapp.com/users', {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -23,7 +23,7 @@ const Users = () => {
 
 
     const handleMakeAdmin = async (email) => {
-        fetch(`http://localhost:5000/user/admin/${user?.email}`, {
+        fetch(`https://agile-tor-39199.herokuapp.com/user/admin/${user?.email}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json',

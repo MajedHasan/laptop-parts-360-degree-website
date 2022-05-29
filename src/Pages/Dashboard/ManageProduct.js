@@ -13,7 +13,7 @@ const ManageProduct = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/parts/${id}`, {
+        fetch(`https://agile-tor-39199.herokuapp.com/parts/${id}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -58,7 +58,7 @@ const ManageProduct = () => {
             description: description
         }
 
-        await fetch(`http://localhost:5000/parts/${id}`, {
+        await fetch(`https://agile-tor-39199.herokuapp.com/parts/${id}`, {
             method: "PATCH",
             headers: {
                 'Content-type': 'application/json',

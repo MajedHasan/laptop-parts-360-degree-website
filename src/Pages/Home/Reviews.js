@@ -7,7 +7,7 @@ const Reviews = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://agile-tor-39199.herokuapp.com/reviews', {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }

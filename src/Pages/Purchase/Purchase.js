@@ -15,7 +15,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/parts/${id}`, {
+        fetch(`https://agile-tor-39199.herokuapp.com/parts/${id}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -64,7 +64,7 @@ const Purchase = () => {
             orderStatus: 'inProgress'
         }
 
-        await fetch('http://localhost:5000/order', {
+        await fetch('https://agile-tor-39199.herokuapp.com/order', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',
@@ -75,7 +75,6 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 if (data?.insertedId) {
-                    toast.success("Your Order has been Placed Successfully")
                     parts.quantity = parts.quantity - quantity
                     event.target.reset()
                     setTotalPriceState(0)
@@ -89,7 +88,7 @@ const Purchase = () => {
                         description: parts.description
                     }
 
-                    fetch(`http://localhost:5000/parts/${id}`, {
+                    fetch(`https://agile-tor-39199.herokuapp.com/parts/${id}`, {
                         method: "PATCH",
                         headers: {
                             'Content-type': 'application/json',
@@ -100,7 +99,7 @@ const Purchase = () => {
                         .then(res => res.json())
                         .then(data => {
                             if (data?.modifiedCount || data?.upsertedCount) {
-                                toast.success("Product update also")
+                                toast.success("Your Order has been Placed Successfully")
                             }
                         })
 

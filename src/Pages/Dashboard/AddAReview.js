@@ -25,7 +25,7 @@ const AddAReview = () => {
             reviewText: reviewText,
         }
 
-        await fetch('http://localhost:5000/review', {
+        await fetch('https://agile-tor-39199.herokuapp.com/review', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
-import { toast } from 'react-toastify';
+import DeleteProductModal from './DeleteProductModal';
 
 const ManageProducts = () => {
 
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/parts', {
+    const [deleteProduct, setDeleteProduct] = useState(null)
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('https://agile-tor-39199.herokuapp.com/parts', {
         headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`
         }
@@ -16,22 +17,6 @@ const ManageProducts = () => {
 
     if (isLoading) {
         return <Loading></Loading>
-    }
-
-
-    const handleDeleteParts = async (id) => {
-        fetch(`http://localhost:5000/parts/${id}`, {
-            method: "DELETE",
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                refetch()
-                toast.success("This product has been deleted")
-            })
     }
 
 
@@ -71,13 +56,25 @@ const ManageProducts = () => {
                                         <Link to={`/dashboard/manageProducts/${parts?._id}`} className="btn btn-xs bg-slate-800 border-slate-800 text-white">Manage</Link>
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDeleteParts(parts?._id)} className='btn btn-xs bg-red-500 border-red-500 text-white'> Delete </button>
+                                        <label htmlFor="deleteProductModal"
+                                            onClick={() => setDeleteProduct(parts)}
+                                            className="btn btn-xs bg-red-500 border-none text-white"
+                                        >Delete</label>
                                     </td>
                                 </tr>
                                 )
                         }
                     </tbody>
                 </table>
+
+                {
+                    deleteProduct && <DeleteProductModal
+                        deleteProduct={deleteProduct}
+                        setDeleteProduct={setDeleteProduct}
+                        refetch={refetch}
+                    ></DeleteProductModal>
+                }
+
             </div>
         </section >
     );

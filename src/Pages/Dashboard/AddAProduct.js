@@ -30,7 +30,7 @@ const AddAProduct = () => {
                         description: data.description
                     }
 
-                    fetch('http://localhost:5000/parts', {
+                    fetch('https://agile-tor-39199.herokuapp.com/parts', {
                         method: "POST",
                         headers: {
                             'Content-type': 'application/json',
@@ -67,7 +67,7 @@ const AddAProduct = () => {
                                 }
                             })
                             }
-                            class="input input-bordered w-full mb-3" />
+                            className="input input-bordered w-full mb-3" />
 
                         {
                             errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>
@@ -80,7 +80,7 @@ const AddAProduct = () => {
                                 }
                             })
                             }
-                            class="input input-bordered w-full mb-3" />
+                            className="input input-bordered w-full mb-3" />
 
                         {
                             errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>
@@ -93,7 +93,7 @@ const AddAProduct = () => {
                                 }
                             })
                             }
-                            class="input input-bordered w-full mb-3" />
+                            className="input input-bordered w-full mb-3" />
 
                         {
                             errors.minOrderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minOrderQuantity.message}</span>
@@ -106,13 +106,13 @@ const AddAProduct = () => {
                                 }
                             })
                             }
-                            name='minOrderQuantity' class="input input-bordered w-full mb-3" />
+                            name='minOrderQuantity' className="input input-bordered w-full mb-3" />
 
                         {
                             errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>
                         }
                         <label htmlFor="">Image</label>
-                        <input type="file" name='image' class="input input-bordered w-full mb-3"
+                        <input type="file" name='image' className="input input-bordered w-full mb-3"
                             {...register("image", {
                                 required: {
                                     value: true,
@@ -125,7 +125,7 @@ const AddAProduct = () => {
                         {
                             errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>
                         }
-                        <textarea class="textarea textarea-bordered w-full mb-3" placeholder="Description"
+                        <textarea className="textarea textarea-bordered w-full mb-3" placeholder="Description"
                             {...register("description", {
                                 required: {
                                     value: true,

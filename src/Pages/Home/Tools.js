@@ -7,7 +7,7 @@ const Tools = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/parts', {
+        fetch('https://agile-tor-39199.herokuapp.com/parts', {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
