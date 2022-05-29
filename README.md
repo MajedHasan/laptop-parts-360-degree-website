@@ -5,7 +5,7 @@
 ---
 
 
-###  ** *[Client Side Code Link](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-MajedHasan)* ** 
+###  ** *[Client Side Code Link](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-MajedHasan)* **
 ###  ** *[Server Side Code Link](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-MajedHasan)* ** 
 ###  ** *[Live Site Link](https://p-hero-assignment-12.web.app/)* ** 
 
